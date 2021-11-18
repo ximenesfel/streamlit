@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  streamlit:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: streamlit
+    container_name: streamlit
+    tty: true
+    volumes:
+      - ./code:/root/code
+      - ./data:/root/data
+      - ./data/.azure:/root/.azure
+      - ./data/.azureml:/root/.azureml
+    ports:
+      - "8501:8501"
+      - "8888:8888"
